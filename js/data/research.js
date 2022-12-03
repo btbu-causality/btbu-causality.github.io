@@ -1,6 +1,6 @@
 let researchDomainList = [
     {
-        '领域名称': '因果分析',
+        '领域名称': '因果归因',
         '描述': '<p><span style="font-family: \'PingFang SC\', Helvetica, Tahoma, \'Hiragino Sans GB\', \'Microsoft YaHei\', SimSun, Heiti, sans-serif; font-size: 12px; white-space: pre-wrap; background-color: #ffffff;">归因在生活、生产中无处不在。经典的归因方法有概率专家系统，如贝叶斯网络；归纳演绎法：从病例，医学文献中提取规则等。相较于经典的归因方法，因果归因解释了事件和行为发生的原因。我们主要研究因果归因，即分析果之因，后验的因之果等。</span></p>',
     },
     {
