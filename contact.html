@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta name="viewport"
+			content="width=device-width,initial-scale=1,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no" />
+		<title>联系我们</title>
+		<link rel="stylesheet" type="text/css" href="css/reset.css" />
+		<link rel="stylesheet" type="text/css" href="css/public.css" />
+		<link rel="stylesheet" type="text/css" href="css/contact.css" />
+	</head>
+	<body>
+		<!-- 头部 -->
+		<div class="btbu-page-header">
+			<div class="btbu-page-box btbu-page-header-box clearfix">
+				<div class="btbu-page-logo">
+					<a class="logo" href="index.html">
+						<img src="img/logo.png"/>
+					</a>
+					<div class="menu btbu-page-app">
+						<img id="sidemenuToggle" src="img/menu.svg" />
+					</div>
+				</div>
+				<div class="btbu-page-nav-wrap">
+					<ul class="clearfix btbu-page-nav">
+						<li><a class="menu" href="index.html">首页</a></li>
+						<li><a class="menu" href="team.html">团队成员</a></li>
+						<li><a class="menu" href="research.html">研究领域</a></li>
+						<li><a class="menu" href="publications.html">研究成果</a></li>
+						<li><a class="menu" href="contact.html">联系我们</a></li>
+					</ul>
+					<div class="btbu-page-nav-mask btbu-page-app"></div>
+				</div>
+			</div>
+		</div>
+		<!-- 内容区域 -->
+		<div class="btbu-contact-body">
+			<div class="btbu-contact-hd">
+				<h1>CONTACT US</h1>
+			</div>
+			<div class="btbu-contact-bd btbu-page-box clearfix">
+				<div class="btbu-contact-map">
+					<div class="btbu-contact-title">地图</div>
+					<div class="map" id="allmap"></div>
+				</div>
+				<div class="btbu-contact-info">
+					<div class="btbu-contact-title">联系我们</div>
+					<h6 class="footerAddressWrapper">地址</h6>
+					<p class="footerAddress footerAddressWrapper"></p>
+					<h6>联系方式</h6>
+					<p class="footerPhoneWrapper">Phone : <span class="footerPhone"></span></p>
+					<p class="footerEmailWrapper">邮箱: <span class="footerEmail"></span></p>
+				</div>
+			</div>
+		</div>
+		<!-- 脚部 -->
+		<div class="bubu-page-footer-wrap" id="aaa">
+			<div class="btbu-page-box bubu-page-footer clearfix">
+				<div class="footer-column footer-column-logo btbu-page-pc">
+					<img class="logo" src="img/logo.png" />
+				</div>
+				<div class="footer-column">
+					<h6>联系我们</h6>
+					<p class="footerPhoneWrapper">电话：<span class="footerPhone"></span></p>
+					<p class="footerEmailWrapper">邮箱：<span class="footerEmail"></span></p>
+				</div>
+				<div class="footer-column footerAddressWrapper">
+					<h6>地址</h6>
+					<p class="footerAddress"></p>
+				</div>
+			</div>
+		</div>
+		<script src="js/jquery.min.js" type="text/javascript"></script>
+		<script src="js/script.js" type="text/javascript"></script>
+		<script type="text/javascript" src="https://api.map.baidu.com/api?v=3.0&ak=DS9TdGQtpdzm28IqISvU8I58lG543kvW"></script>
+        <script src="js/data/contact.js" type="text/javascript"></script>
+        <script type="text/javascript">
+        	// 百度地图API功能
+        	var map = new BMap.Map("allmap");    // 创建Map实例
+            let lng = 116.175905;
+            let lat = 39.726586  
+        	map.centerAndZoom(new BMap.Point(lng, lat), 13);    // 初始化地图,设置中心点坐标和地图级别
+            
+        	//添加地图类型控件
+        	map.addControl(new BMap.MapTypeControl({
+        		mapTypes:[
+                    BMAP_NORMAL_MAP,
+                    BMAP_HYBRID_MAP
+                ]}));	  
+            var point = new BMap.Point(lng, lat); //将标注点转化成地图上的点
+            var marker = new BMap.Marker(point); //将点转化成标注点
+            map.addOverlay(marker);  //将标注点添加到地图上
+            showInfo(marker, point);
+            function showInfo(thisMarker,point) {
+                //获取点的信息
+                var sContent = 
+                '<ul style="margin:0 0 5px 0;padding:0.2em 0">'  
+                +'<li style="line-height: 26px;font-size: 15px;">' 
+                +  contact.address 
+                + '</li>'  
+                +'</ul>';
+                var infoWindow = new BMap.InfoWindow(sContent); //创建信息窗口对象
+                thisMarker.openInfoWindow(infoWindow); //图片加载完后重绘infoWindow
+            }
+        	map.setCurrentCity("北京");          // 设置地图显示的城市 此项是必须设置的
+        	map.enableScrollWheelZoom(true);     //开启鼠标滚轮缩放
+        </script>
+	</body>
+</html>
